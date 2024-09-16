@@ -17,11 +17,13 @@ namespace ECS.Modules.Exerussus.Health
             public float Amount;
         }
         
+        /// <summary> Накладывается при Health.Current == 0 </summary>
         public struct DeadMark : IEcsComponent
         {
             
         }
         
+        /// <summary> Отключает регенерацию здоровья </summary>
         public struct HealthRegenerationStopMark : IEcsComponent
         {
             
