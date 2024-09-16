@@ -39,8 +39,8 @@ namespace ECS.Modules.Exerussus.Health.Systems
                     {
                         Signal.RegistryRaise(new HealthSignals.OnDamageTaken
                         {
-                            OriginEntity = packedEntity,
-                            TargetEntity = packedEntity,
+                            Origin = packedEntity,
+                            Target = packedEntity,
                             Amount = Mathf.Abs(amount)
                         });
             

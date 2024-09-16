@@ -8,31 +8,34 @@ namespace ECS.Modules.Exerussus.Health.Systems
     {
         protected override void OnSignal(HealthSignals.CommandDealHeal data)
         {
-            var hasTarget = data.OriginEntity.Unpack(World, out var targetEntity);
-            if (!hasTarget || Pooler.DeadMark.Has(targetEntity)) return;
-
-            if (!Pooler.Health.Has(targetEntity)) return;
-            
-            ref var healthData = ref Pooler.Health.Get(targetEntity);
-
-            var prev = healthData.Current;
-
-            healthData.Current = Math.Min(healthData.Max, healthData.Current + data.Amount);
-            
-            var difHealth = healthData.Current - prev;
-            
-            Signal.RegistryRaise(new HealthSignals.OnHealTaken
+            foreach (var target in data.Targets)
             {
-                OriginEntity = data.OriginEntity,
-                TargetEntity = data.TargetEntity,
-                Amount = difHealth
-            });
+                var hasTarget = target.Unpack(World, out var targetEntity);
+                if (!hasTarget || Pooler.DeadMark.Has(targetEntity)) continue;
+
+                if (!Pooler.Health.Has(targetEntity)) continue;
             
-            Signal.RegistryRaise(new HealthSignals.OnHealthChange
-            {
-                Entity = data.TargetEntity,
-                Amount = difHealth
-            });
+                ref var healthData = ref Pooler.Health.Get(targetEntity);
+
+                var prev = healthData.Current;
+
+                healthData.Current = Math.Min(healthData.Max, healthData.Current + data.Amount);
+            
+                var difHealth = healthData.Current - prev;
+            
+                Signal.RegistryRaise(new HealthSignals.OnHealTaken
+                {
+                    Origin = data.Origin,
+                    Target = target,
+                    Amount = difHealth
+                });
+            
+                Signal.RegistryRaise(new HealthSignals.OnHealthChange
+                {
+                    Entity = target,
+                    Amount = difHealth
+                });
+            }
         }
     }
 }

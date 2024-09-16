@@ -6,29 +6,29 @@ namespace ECS.Modules.Exerussus.Health
     {
         public struct CommandDealDamage
         {
-            public EcsPackedEntity OriginEntity;
-            public EcsPackedEntity TargetEntity;
+            public EcsPackedEntity Origin;
+            public EcsPackedEntity[] Targets;
             public float Amount;
         }
         
         public struct CommandDealHeal
         {
-            public EcsPackedEntity OriginEntity;
-            public EcsPackedEntity TargetEntity;
+            public EcsPackedEntity Origin;
+            public EcsPackedEntity[] Targets;
             public float Amount;
         }
         
         public struct OnDamageTaken
         {
-            public EcsPackedEntity OriginEntity;
-            public EcsPackedEntity TargetEntity;
+            public EcsPackedEntity Origin;
+            public EcsPackedEntity Target;
             public float Amount;
         }
         
         public struct OnHealTaken
         {
-            public EcsPackedEntity OriginEntity;
-            public EcsPackedEntity TargetEntity;
+            public EcsPackedEntity Origin;
+            public EcsPackedEntity Target;
             public float Amount;
         }
         
