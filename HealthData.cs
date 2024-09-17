@@ -1,4 +1,5 @@
-﻿using Exerussus._1EasyEcs.Scripts.Core;
+﻿
+using Exerussus._1EasyEcs.Scripts.Core;
 
 namespace ECS.Modules.Exerussus.Health
 {

@@ -1,4 +1,5 @@
-﻿using Leopotam.EcsLite;
+﻿
+using Leopotam.EcsLite;
 
 namespace ECS.Modules.Exerussus.Health
 {

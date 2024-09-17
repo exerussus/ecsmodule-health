@@ -1,7 +1,6 @@
 ﻿using Exerussus._1EasyEcs.Scripts.Core;
 using Leopotam.EcsLite;
 using UnityEngine;
-using LogType = Exerussus._1EasyEcs.Scripts.Custom.LogType;
 
 namespace ECS.Modules.Exerussus.Health.Systems
 {
