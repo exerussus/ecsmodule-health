@@ -8,11 +8,10 @@ namespace ECS.Modules.Exerussus.Health
     public class HealthGroup : EcsGroup<HealthPooler>
     {
         protected override float TickSystemDelay { get; } = 0.5f;
-
-        protected override void SetInitSystems(IEcsSystems initSystems)
+        
+        protected override void OnBeforePoolInitializing(EcsWorld world, HealthPooler pooler)
         {
-            initSystems.Add(new DamageDealerSystem());
-            initSystems.Add(new HealDealerSystem());
+            pooler.PreInitialize(Signal);
         }
 
         protected override void SetTickUpdateSystems(IEcsSystems tickUpdateSystems)
