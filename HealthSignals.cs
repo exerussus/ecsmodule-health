@@ -5,20 +5,6 @@ namespace ECS.Modules.Exerussus.Health
 {
     public static class HealthSignals
     {
-        public struct CommandDealDamage
-        {
-            public EcsPackedEntity Origin;
-            public EcsPackedEntity[] Targets;
-            public float Amount;
-        }
-        
-        public struct CommandDealHeal
-        {
-            public EcsPackedEntity Origin;
-            public EcsPackedEntity[] Targets;
-            public float Amount;
-        }
-        
         public struct OnDamageTaken
         {
             public EcsPackedEntity Origin;
