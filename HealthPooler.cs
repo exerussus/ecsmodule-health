@@ -175,5 +175,21 @@ namespace ECS.Modules.Exerussus.Health
                 Amount = difHealth
             });
         }
+
+        public void AddMaxHealth(int entity, float amount, bool restoreCurrentHealth = true)
+        {
+            if (!Health.Has(entity)) return;
+            ref var healthData = ref Health.Get(entity);
+            
+            healthData.Max += amount;
+            
+            if (restoreCurrentHealth) healthData.Current += amount;
+            
+            Signal.RegistryRaise(new HealthSignals.OnHealthChange()
+            {
+                Entity = World.PackEntity(entity),
+                Amount = amount
+            });
+        }
     }
 }
