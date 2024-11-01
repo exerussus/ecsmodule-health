@@ -10,7 +10,7 @@ namespace ECS.Modules.Exerussus.Health
 {
     public class HealthPooler : IGroupPooler
     {
-        public void Initialize(EcsWorld world)
+        public virtual void Initialize(EcsWorld world)
         {
             Health = new PoolerModule<HealthData.Health>(world);
             HealthRegeneration = new PoolerModule<HealthData.HealthRegeneration>(world);
