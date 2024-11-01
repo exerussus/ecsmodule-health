@@ -10,6 +10,12 @@ namespace ECS.Modules.Exerussus.Health
 {
     public class HealthPooler : IGroupPooler
     {
+        public virtual void BeforeInitialize(EcsWorld world, GameShare gameShare, GameContext gameContext, string groupName)
+        {
+            World = world;
+            Signal = gameShare.GetSharedObject<Signal>();
+        }
+
         public virtual void Initialize(EcsWorld world)
         {
             Health = new PoolerModule<HealthData.Health>(world);
@@ -18,8 +24,8 @@ namespace ECS.Modules.Exerussus.Health
             HealthRegenerationStopMark = new PoolerModule<HealthData.HealthRegenerationStopMark>(world);
         }
         
-        [InjectSharedObject] public Signal Signal { get; private set; }
-        [InjectSharedObject] public EcsWorld World { get; private set; }
+        public Signal Signal { get; private set; }
+        public EcsWorld World { get; private set; }
         public PoolerModule<HealthData.Health> Health { get; private set; }
         public PoolerModule<HealthData.HealthRegeneration> HealthRegeneration { get; private set; }
         public PoolerModule<HealthData.DeadMark> DeadMark { get; private set; }
