@@ -61,6 +61,12 @@ namespace ECS.Modules.Exerussus.Health.Systems
                         Entity = packedEntity,
                         Amount = amount
                     });
+                    
+                    Signal.RegistryRaise(new HealthSignals.OnHealthRegenerationTick
+                    {
+                        Entity = packedEntity,
+                        Amount = amount
+                    });
                 }
             }
         }

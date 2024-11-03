@@ -25,6 +25,12 @@ namespace ECS.Modules.Exerussus.Health
             public float Amount;
         }
         
+        public struct OnHealthRegenerationTick
+        {
+            public EcsPackedEntity Entity;
+            public float Amount;
+        }
+        
         public struct OnEntityDead
         {
             public EcsPackedEntity KillerEntity;
