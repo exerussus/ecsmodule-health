@@ -1,4 +1,5 @@
 ﻿using Exerussus._1EasyEcs.Scripts.Core;
+using Exerussus.EasyEcsModules.BasicData;
 using Leopotam.EcsLite;
 using UnityEngine;
 
